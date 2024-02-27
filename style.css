@@ -1,0 +1,141 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: white;
+    /* background-color: #234D65; */
+    color: white;
+}
+
+img {
+    object-fit: cover;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 10em 6em 10em;
+}
+
+.header_div_haut {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 7em;
+}
+
+h1 {
+    text-shadow: 3px 3px 10px #160C28;;
+}
+
+.header_div_bas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#recherche {
+    width: 21em;
+    height: 4em;
+    border: solid 2px #95C1DB;
+    border-radius: 1em;
+    margin-right: 1em;
+    box-shadow: 3px 3px 15px 1px #160C28;
+}
+
+.recherche_bouton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4em;
+    height: 4em;
+    border: solid 2px #95C1DB;
+    border-radius: 1em;
+    background-color: #4995C1;
+    box-shadow: 3px 3px 15px 1px #160C28;
+}
+
+.icon_loupe {
+    width: 3.5em;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10em;
+}
+
+#resultat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #4995C1;
+    border: solid 4px #95C1DB;
+    box-shadow: 3px 3px 15px 1px #160C28;
+    border-radius: 1em;
+    width: 15em;
+    height: 22em;
+    z-index: 1;
+}
+
+#resultat p {
+    font-size: 20px;
+    margin: 0.3em 0;
+}
+
+.resultat_icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#icon_temp {
+    width: 8em;
+}
+
+#map {
+    height: 30em;
+    width: 50em;
+    border: solid 4px #95C1DB;
+    border-radius: 1em;
+    box-shadow: 3px 3px 15px 1px #160C28;
+    z-index: 1;
+}
+
+.svg_main {
+    position: absolute;
+    bottom: 1em;
+    left: 0;
+    z-index: -1;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #234D65;    
+}
+
+.svg_footer {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <title>API meteo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header_div_haut">
+            <img class="logo" src="/image/thermometer.png" alt="">
+            <h1>Météo Application</h1>
+        </div>
+        <div class="header_div_bas">
+            <form id="form" action="">
+                <input type="search" name="recherche" id="recherche">
+                <div id="sugestion"></div>
+                <button class="recherche_bouton" type="submit">
+                    <img class="icon_loupe" src="/image/recherche.png" alt="">
+                </button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div id="resultat">
+            <h2 id="nom"></h2>
+            <div class="resultat_icon">
+                <img id="icon_temp" src="" alt="">
+                <p id="description"></p>
+            </div>
+            <div class="resultat_info">
+                <p id="temperature"></p>
+                <p id="humidite"></p>
+                <p id="vent"></p>
+                <p id="presipitation"></p>
+            </div>
+        </div>
+        <div id="map"></div>
+        <svg class="svg_main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#234D65" fill-opacity="1" d="M0,64L30,90.7C60,117,120,171,180,176C240,181,300,139,360,117.3C420,96,480,96,540,122.7C600,149,660,203,720,213.3C780,224,840,192,900,160C960,128,1020,96,1080,74.7C1140,53,1200,43,1260,32C1320,21,1380,11,1410,5.3L1440,0L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
+    </main>
+    <footer>
+        <p>@Landa Damien || 2024 tous droits réserver</p>
+        <svg class="svg_footer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#2B556D" fill-opacity="1" d="M0,128L30,138.7C60,149,120,171,180,197.3C240,224,300,256,360,272C420,288,480,288,540,282.7C600,277,660,267,720,256C780,245,840,235,900,218.7C960,203,1020,181,1080,154.7C1140,128,1200,96,1260,122.7C1320,149,1380,235,1410,277.3L1440,320L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
+    </footer>
+</body>
+<script src="script.js"></script>
+</html>
