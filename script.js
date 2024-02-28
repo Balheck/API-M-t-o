@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
   var lon = 2.0833;
   var map; // Référence à l'objet de carte
   var marker; // Référence au marqueur
+  sugestion.style.display = 'none';
 
   // Fonction pour initialiser la carte et ajouter le marqueur
   function initMap() {
@@ -36,25 +37,23 @@ document.addEventListener("DOMContentLoaded", function(){
         const hum = weatherData.main.humidity;
         const vent = weatherData.wind.speed;
         const presip = weatherData.clouds.all;
-        // Effacer le contenu existant de la div resultat
-        // resultatDiv.innerHTML = "";
     
         h2Nom.textContent = name;
         icon_temp.src = (iconUrl);
         pDescription.textContent = description;
-        pTemperature.textContent = "Température : " + temp;
-        pHumidite.textContent = "Humidité : " + hum;
-        pVent.textContent = "Vent : " + vent;
-        pPresipitation.textContent = "Présipitation : " + presip;
+        pTemperature.textContent = "Température : " + temp + "°C";
+        pHumidite.textContent = "Humidité : " + hum + "%";
+        pVent.textContent = "Vent : " + vent + "m/s";
+        pPresipitation.textContent = "Présipitation : " + presip + "%";
         
         // Mettre à jour le contenu du popup de la carte Leaflet
         const popupContent = `
             <b>${name}</b><br>
             Description: ${description}<br>
             Temperature: ${temp}°C<br>
-            Humidity: ${hum}%<br>
-            Wind Speed: ${vent} m/s<br>
-            Cloudiness: ${presip}%
+            Humidité: ${hum}%<br>
+            Vent: ${vent} m/s<br>
+            Présipitation: ${presip}%
         `;
         marker.bindPopup(popupContent).openPopup();
     })
@@ -70,15 +69,16 @@ document.addEventListener("DOMContentLoaded", function(){
     const query = this.value;
 
     if (query.length < 3) {
-        sugestion.innerHTML = ''; // Nettoyer les suggestions si moins de 3 caractères
+        sugestion.style.display = 'none';
         return;
     }
 
-    fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(query)}&type=municipality&limit=5`)
+    fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(query)}&type=municipality&limit=4`)
         .then(response => response.json())
         .then(data => {
             const suggestions = data.features.map(feature => feature.properties).filter((value, index, self) => self.indexOf(value) === index);
             updateAutocompleteSuggestions(suggestions);
+            sugestion.style.display = 'block';
         })
         .catch(error => console.error('Erreur lors de la récupération des données:', error));
   });
@@ -122,25 +122,24 @@ document.addEventListener("DOMContentLoaded", function(){
             const hum = weatherData.main.humidity;
             const vent = weatherData.wind.speed;
             const presip = weatherData.clouds.all;
-            // Effacer le contenu existant de la div resultat
-            // resultatDiv.innerHTML = "";
+            sugestion.style.display = 'none';
         
             h2Nom.textContent = name;
             icon_temp.src = (iconUrl);
             pDescription.textContent = description;
-            pTemperature.textContent = "Température : " + temp;
-            pHumidite.textContent = "Humidité : " + hum;
-            pVent.textContent = "Vent : " + vent;
-            pPresipitation.textContent = "Présipitation : " + presip;
+            pTemperature.textContent = "Température : " + temp + "°C";
+            pHumidite.textContent = "Humidité : " + hum + "%";
+            pVent.textContent = "Vent : " + vent + "m/s";
+            pPresipitation.textContent = "Présipitation : " + presip + "%";
         
             // Mettre à jour le contenu du popup de la carte Leaflet
             const popupContent = `
                 <b>${name}</b><br>
                 Description: ${description}<br>
                 Temperature: ${temp}°C<br>
-                Humidity: ${hum}%<br>
-                Wind Speed: ${vent} m/s<br>
-                Cloudiness: ${presip}%
+                Humidité: ${hum}%<br>
+                Vent: ${vent} m/s<br>
+                Présipitation: ${presip}%
             `;
             marker.bindPopup(popupContent).openPopup();
         })
@@ -188,25 +187,24 @@ document.addEventListener("DOMContentLoaded", function(){
         const hum = weatherData.main.humidity;
         const vent = weatherData.wind.speed;
         const presip = weatherData.clouds.all;
-        // Effacer le contenu existant de la div resultat
-        // resultatDiv.innerHTML = "";
+        sugestion.style.display = 'none';
     
         h2Nom.textContent = name;
         icon_temp.src = (iconUrl);
         pDescription.textContent = description;
-        pTemperature.textContent = "Température : " + temp;
-        pHumidite.textContent = "Humidité : " + hum;
-        pVent.textContent = "Vent : " + vent;
-        pPresipitation.textContent = "Présipitation : " + presip;
+        pTemperature.textContent = "Température : " + temp + "°C";
+        pHumidite.textContent = "Humidité : " + hum + "%";
+        pVent.textContent = "Vent : " + vent + "m/s";
+        pPresipitation.textContent = "Présipitation : " + presip + "%";
     
         // Mettre à jour le contenu du popup de la carte Leaflet
         const popupContent = `
             <b>${name}</b><br>
             Description: ${description}<br>
             Temperature: ${temp}°C<br>
-            Humidity: ${hum}%<br>
-            Wind Speed: ${vent} m/s<br>
-            Cloudiness: ${presip}%
+            Humidité: ${hum}%<br>
+            Vent: ${vent} m/s<br>
+            Présipitation: ${presip}%
         `;
         marker.bindPopup(popupContent).openPopup();
     })
@@ -232,7 +230,7 @@ function getWeatherData(lat, lon) {
 }
 
 function getCityData(nom, postcode) {
-  let url = `https://api-adresse.data.gouv.fr/search/?q=${nom}`;
+  let url = `https://api-adresse.data.gouv.fr/search/?q=${nom}&type=municipality`;
   if (postcode) {
     url += `&postcode=${postcode}`;
   }
